@@ -12,27 +12,32 @@ import About from './pages/About/About'
 import Login from './pages/Login/Login'
 import Register from './pages/Register/Register'
 
+// context
+import { AuthProvider } from './context/AuthContext'
+
 function App() {
 
   return (
     <>
       <div className='App'>
-        <BrowserRouter>
+        <AuthProvider>
+          <BrowserRouter>
 
-        <Navbar />
+            <Navbar />
 
-          <div className='container'>
-            <Routes>
-              <Route path='/' element={<Home />}/>
-              <Route path='/about' element={<About />}/>
-              <Route path='/login' element={<Login />}/>
-              <Route path='/register' element={<Register />}/>
-            </Routes>
-          </div>
+            <div className='container'>
+              <Routes>
+                <Route path='/' element={<Home />} />
+                <Route path='/about' element={<About />} />
+                <Route path='/login' element={<Login />} />
+                <Route path='/register' element={<Register />} />
+              </Routes>
+            </div>
 
-          <Footer />
+            <Footer />
 
-        </BrowserRouter>
+          </BrowserRouter>
+        </AuthProvider>
       </div>
     </>
   )
