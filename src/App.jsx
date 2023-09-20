@@ -35,7 +35,6 @@ function App() {
     onAuthStateChanged(auth, (user) => {
       setUser(user)
     })
-
   }, [auth])
 
   if (loadingUser) {
