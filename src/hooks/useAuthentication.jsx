@@ -77,7 +77,6 @@ export const useAuthentication = () => {
 
     // login - sign in
     const login = async (data) => {
-        console.log(data);
         checkIfIsCancelled();
     
         setLoading(true);
@@ -88,8 +87,10 @@ export const useAuthentication = () => {
         } catch (error) {
             let systemErrorMessage;
 
-            if (error.code || error.message) {
+            if (error.message) {
                 systemErrorMessage = "E-mail invalido/Senha incorreta"
+            } else {
+                systemErrorMessage = "Internal server error"
             }
 
             setError(systemErrorMessage);
