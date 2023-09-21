@@ -13,8 +13,17 @@ const CreatePost = () => {
   const [formError, setFormError] = useState("")
 
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async(e) => {
     e.preventDefault()
+
+    const post = {
+      title,
+      image,
+      body,
+      tags
+    }
+
+    
   }
 
   return (
