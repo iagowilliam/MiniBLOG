@@ -6,6 +6,7 @@ import {
     signOut } from "firebase/auth"
 
 import { useState, useEffect } from "react"
+import { auth } from "../firebase/config"
 
 export const useAuthentication = () => {
 
@@ -15,8 +16,6 @@ export const useAuthentication = () => {
     // cleanup
     // deal with memory leak - lidar com vazamento de memória
     const [cancelled, setCancelled] = useState(false)
-
-    const auth = getAuth()
 
     function checkIfIsCancelled() {
         if (cancelled) {
