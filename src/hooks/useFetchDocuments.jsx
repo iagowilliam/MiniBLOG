@@ -14,15 +14,15 @@ export const useFetchDocuments = (docCollection, search = null, uid = null) => {
 
     useEffect(() => {
 
-        async function loadData(){
-            if(cancelled) return
+        async function loadData() {
+            if (cancelled) return
 
             setLoading(true)
 
             const collectionRef = await collection(db, docCollection)
 
             try {
-                
+
                 let q
 
                 // busca
@@ -30,9 +30,9 @@ export const useFetchDocuments = (docCollection, search = null, uid = null) => {
                 // dashboard
 
                 q = await query(collectionRef, orderBy("createdAt", "desc"))
-                
+
                 await onSnapshot(q, (querySnapshot) => {
-                    
+
                     setDocuments(
                         querySnapshot.docs.map((doc) => ({
                             id: doc.id,
@@ -54,14 +54,14 @@ export const useFetchDocuments = (docCollection, search = null, uid = null) => {
 
         loadData()
 
-    },[docCollection, search, uid, cancelled])
+    }, [docCollection, search, uid, cancelled])
 
 
     useEffect(() => {
         return () => setCancelled(true)
-    },[])
+    }, [])
 
 
-    return (documents, loading, error)
+    return { documents, loading, error }
 
 }
